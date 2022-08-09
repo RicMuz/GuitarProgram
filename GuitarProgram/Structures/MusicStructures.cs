@@ -1,7 +1,7 @@
 ﻿namespace GuitarProgram
 {
     //============================================================================================================
-    //ENUMS - ENUMS - ENUMS - ENUMS -ENUMS -ENUMS - ENUMS - ENUMS - ENUMS - ENUMS - ENUMS - ENUMS - ENUMS - ENUMS 
+    // ENUMS - ENUMS - ENUMS - ENUMS -ENUMS -ENUMS - ENUMS - ENUMS - ENUMS - ENUMS - ENUMS - ENUMS - ENUMS - ENUMS 
     //============================================================================================================
 
     #region Enums
@@ -110,7 +110,7 @@
     #endregion
 
     //============================================================================================================
-    //STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS -STRUCTS -STRUCTS -STRUCTS -ST 
+    // STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS - STRUCTS
     //============================================================================================================
 
     #region Structs
