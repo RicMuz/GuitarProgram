@@ -34,6 +34,10 @@ namespace GuitarProgram
 
         #region Public Methods
 
+        /// <summary>
+        /// Initialize sounds output and sets the default output device
+        /// </summary>
+        /// <param name="OutputDeviceID">Default output device ID</param>
         public Sounds(int OutputDeviceID = 0)
         {
             // Initializing MidiOut device
