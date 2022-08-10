@@ -2,15 +2,32 @@ namespace GuitarProgram
 {
     public partial class Form1 : Form
     {
+        //============================================================================================================
+        // DATA - DATA - DATA - DATA - DATA - DATA - DATA - DATA - DATA - DATA - DATA - DATA - DATA - DATA - DATA - DA
+        //============================================================================================================
+
+        #region Data
+
+        // Constants: 
         private const int numberOfStrings = 6;
 
+        // Components:
         Guitar guitar;
         PictureBox[] points;
 
+        // Variables:
         // TODO: This should be also reset, when changing modes
         // TODO: When no chord is selected buttons shouldn't be enabled
         Tones selectedRootNote = Tones.None;
         ChordTypes selectedChordType = ChordTypes.None;
+
+        #endregion
+
+        //============================================================================================================
+        // GENERAL - GENERAL - GENERAL - GENERAL - GENERAL - GENERAL - GENERAL - GENERAL - GENERAL - GENERAL - GENERAL
+        //============================================================================================================
+
+        #region General
 
         public Form1()
         {
@@ -24,6 +41,14 @@ namespace GuitarProgram
         {
             guitar.Close();
         }
+
+        #endregion
+
+        //============================================================================================================
+        // CHORD SELECTOR - CHORD SELECTOR - CHORD SELECTOR - CHORD SELECTOR - CHORD SELECTOR - CHORD SELECTOR - CHORD
+        //============================================================================================================
+
+        #region Chord Selector
 
         private void comboBoxRootNote_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -64,5 +89,7 @@ namespace GuitarProgram
                 guitar.ChangeShape();
             }
         }
+
+        #endregion
     }
 }
