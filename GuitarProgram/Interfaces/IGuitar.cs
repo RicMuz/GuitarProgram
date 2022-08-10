@@ -39,5 +39,10 @@ namespace GuitarProgram
         /// Closes all dependences
         /// </summary>
         public void Close();
+
+        /// <summary>
+        /// Changes shapes
+        /// </summary>
+        public void ChangeShape();
     }
 }
