@@ -1,4 +1,4 @@
-﻿namespace GuitarProgram.Classes
+﻿namespace GuitarProgram
 {
     internal class Guitar : IGuitar
     {
