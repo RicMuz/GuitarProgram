@@ -119,7 +119,7 @@ namespace GuitarProgram
             {
                 if (currentlyPlaying[i] != -1)
                 {
-                    midiOut.Send(MidiMessage.StartNote((int)openStrings[i] + currentlyPlaying[i], volume, chanel).RawData);
+                    midiOut.Send(MidiMessage.StopNote((int)openStrings[i] + currentlyPlaying[i], volume, chanel).RawData);
                 }
             }
 
