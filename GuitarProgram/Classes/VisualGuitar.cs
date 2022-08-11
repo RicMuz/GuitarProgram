@@ -55,14 +55,21 @@
 
         public void ShowChord(int[] ChordShape)
         {
+            // Caching default values of guitar
+            if(ChordShape == new int[6] {-1,-1,-1,-1,-1,-1})
+            {
+                this.Reset();
+                return;
+            }
+
             // Moves all points to desired chord shape
             for (int i = 0; i < numberOfStrings; i++)
             {
-                points[i].Location = new Point(originalPositionsOfPoints[i].X + ChordShape[i] * x, (int)((double)originalPositionsOfPoints[i].Y + (double)ChordShape[i] * y[i]));
+                points[i].Invoke((MethodInvoker)delegate { points[i].Location = new Point(originalPositionsOfPoints[i].X + ChordShape[i] * x, (int)((double)originalPositionsOfPoints[i].Y + (double)ChordShape[i] * y[i])); });
             }
 
             // Background refresh
-            fretBoard.Refresh();
+            fretBoard.Invoke((MethodInvoker)delegate { fretBoard.Refresh(); });
         }
 
         #endregion

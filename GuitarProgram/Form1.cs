@@ -16,6 +16,7 @@ namespace GuitarProgram
         PictureBox[] points;
         FileLoader fileLoader;
         LoopPlayer player;
+        Thread playerThread;
 
         // Variables:
         // TODO: This should be also reset, when changing modes
@@ -40,6 +41,7 @@ namespace GuitarProgram
             guitar = new Guitar(ref points, ref pictureBoxFretboard);
             fileLoader = new FileLoader();
             player = new LoopPlayer();
+            playerThread = new Thread(playLoop);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -146,10 +148,11 @@ namespace GuitarProgram
             if(!shouldPlay)
             {
                 shouldPlay = true;
+                playerThread = new Thread(playLoop);
                 buttonPlayStopLoop.Text = "Stop Loop";
                 resetChordSelector();
                 chordSelectorEnableControls(false);
-                playLoop();
+                playerThread.Start();
             }
             else
             {
