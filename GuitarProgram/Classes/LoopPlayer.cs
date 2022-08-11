@@ -43,7 +43,27 @@ namespace GuitarProgram
             {
                 string Line = line.ToUpper();
                 string[] parts = Line.Split(";");
-                newLoop.Add(new Chord(getRootNote(parts[0].Trim()), getChordType(parts[1].Trim()), getDuration(parts[2].Trim())));
+
+                // Getting correct format:
+                Tones tone = getRootNote(parts[0].Trim());
+                ChordTypes chordType = getChordType(parts[1].Trim());
+                Duration duration = getDuration(parts[2].Trim());
+
+                // Dash:
+                if((tone == Tones.None || chordType == ChordTypes.None) && duration != Duration.None)
+                {
+                    newLoop.Add(new Chord(Tones.None, ChordTypes.None, duration));
+                }
+                // Bad input (Nothing happens):
+                else if (duration == Duration.None)
+                {
+                    newLoop.Add(new Chord(Tones.None, ChordTypes.None, Duration.None));
+                }
+                // Normal tone:
+                else
+                {
+                    newLoop.Add(new Chord(tone, chordType, duration));
+                }
             }
 
             // Saves the new loop
