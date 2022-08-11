@@ -14,12 +14,15 @@ namespace GuitarProgram
         // Components:
         Guitar guitar;
         PictureBox[] points;
+        FileLoader fileLoader;
+        LoopPlayer player;
 
         // Variables:
         // TODO: This should be also reset, when changing modes
         // TODO: When no chord is selected buttons shouldn't be enabled
         Tones selectedRootNote = Tones.None;
         ChordTypes selectedChordType = ChordTypes.None;
+        bool shouldPlay = false;
 
         #endregion
 
@@ -35,6 +38,8 @@ namespace GuitarProgram
             points = new PictureBox[numberOfStrings]  { pictureBoxLE, pictureBoxA, pictureBoxD, pictureBoxG, pictureBoxH, pictureBoxHE };
 
             guitar = new Guitar(ref points, ref pictureBoxFretboard);
+            fileLoader = new FileLoader();
+            player = new LoopPlayer();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -49,6 +54,22 @@ namespace GuitarProgram
         //============================================================================================================
 
         #region Chord Selector
+
+        private void resetChordSelector()
+        {
+            selectedChordType = ChordTypes.None;
+            selectedRootNote = Tones.None;
+            comboBoxChordType.Text = "";
+            comboBoxRootNote.Text = "";
+        }
+
+        private void chordSelectorEnableControls(bool b)
+        {
+            comboBoxRootNote.Enabled = b;
+            comboBoxChordType.Enabled = b;
+            buttonChangeChordShape.Enabled = b;
+            buttonPlayDisplayedChord.Enabled = b;
+        }
 
         private void comboBoxRootNote_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -91,5 +112,51 @@ namespace GuitarProgram
         }
 
         #endregion
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(openFileDialogFileInput.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = openFileDialogFileInput.FileName;
+                List<Chord> loop = fileLoader.ReadFile(fileName);
+
+                player.Loop = loop;
+                player.Reset();
+                richTextBoxLoop.Text = "";
+                buttonPlayStopLoop.Enabled = true;
+
+                foreach(Chord ch in loop)
+                {
+                    richTextBoxLoop.Text += $"{ch.RootNote}; {ch.Type}; {ch.duration}\n";
+                }
+            }
+        }
+
+        private void playLoop()
+        {
+            while(shouldPlay)
+            {
+                Chord currentChord = player.NextChord();
+                guitar.PlayChord(currentChord.duration, currentChord.RootNote, currentChord.Type);
+            }
+        }
+
+        private void buttonPlayStopLoop_Click(object sender, EventArgs e)
+        {
+            if(!shouldPlay)
+            {
+                shouldPlay = true;
+                buttonPlayStopLoop.Text = "Stop Loop";
+                resetChordSelector();
+                chordSelectorEnableControls(false);
+                playLoop();
+            }
+            else
+            {
+                shouldPlay = false;
+                buttonPlayStopLoop.Text = "Play Loop";
+                chordSelectorEnableControls(true);
+            }
+        }
     }
 }

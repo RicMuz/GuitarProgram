@@ -39,6 +39,12 @@
             this.comboBoxChordType = new System.Windows.Forms.ComboBox();
             this.buttonPlayDisplayedChord = new System.Windows.Forms.Button();
             this.buttonChangeChordShape = new System.Windows.Forms.Button();
+            this.menuStripMenu = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialogFileInput = new System.Windows.Forms.OpenFileDialog();
+            this.richTextBoxLoop = new System.Windows.Forms.RichTextBox();
+            this.buttonPlayStopLoop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFretboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxH)).BeginInit();
@@ -46,6 +52,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLE)).BeginInit();
+            this.menuStripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxFretboard
@@ -134,7 +141,7 @@
             "A",
             "A#",
             "H"});
-            this.comboBoxRootNote.Location = new System.Drawing.Point(12, 55);
+            this.comboBoxRootNote.Location = new System.Drawing.Point(12, 31);
             this.comboBoxRootNote.Name = "comboBoxRootNote";
             this.comboBoxRootNote.Size = new System.Drawing.Size(129, 28);
             this.comboBoxRootNote.TabIndex = 7;
@@ -146,7 +153,7 @@
             this.comboBoxChordType.Items.AddRange(new object[] {
             "dur",
             "moll"});
-            this.comboBoxChordType.Location = new System.Drawing.Point(147, 55);
+            this.comboBoxChordType.Location = new System.Drawing.Point(147, 31);
             this.comboBoxChordType.Name = "comboBoxChordType";
             this.comboBoxChordType.Size = new System.Drawing.Size(129, 28);
             this.comboBoxChordType.TabIndex = 8;
@@ -155,18 +162,18 @@
             // buttonPlayDisplayedChord
             // 
             this.buttonPlayDisplayedChord.Enabled = false;
-            this.buttonPlayDisplayedChord.Location = new System.Drawing.Point(12, 89);
+            this.buttonPlayDisplayedChord.Location = new System.Drawing.Point(12, 65);
             this.buttonPlayDisplayedChord.Name = "buttonPlayDisplayedChord";
             this.buttonPlayDisplayedChord.Size = new System.Drawing.Size(264, 78);
             this.buttonPlayDisplayedChord.TabIndex = 9;
-            this.buttonPlayDisplayedChord.Text = "Play";
+            this.buttonPlayDisplayedChord.Text = "Play selected chord";
             this.buttonPlayDisplayedChord.UseVisualStyleBackColor = true;
             this.buttonPlayDisplayedChord.Click += new System.EventHandler(this.buttonPlayDisplayedChord_Click);
             // 
             // buttonChangeChordShape
             // 
             this.buttonChangeChordShape.Enabled = false;
-            this.buttonChangeChordShape.Location = new System.Drawing.Point(12, 173);
+            this.buttonChangeChordShape.Location = new System.Drawing.Point(12, 149);
             this.buttonChangeChordShape.Name = "buttonChangeChordShape";
             this.buttonChangeChordShape.Size = new System.Drawing.Size(264, 78);
             this.buttonChangeChordShape.TabIndex = 10;
@@ -174,11 +181,63 @@
             this.buttonChangeChordShape.UseVisualStyleBackColor = true;
             this.buttonChangeChordShape.Click += new System.EventHandler(this.buttonChangeChordShape_Click);
             // 
+            // menuStripMenu
+            // 
+            this.menuStripMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStripMenu.Location = new System.Drawing.Point(0, 0);
+            this.menuStripMenu.Name = "menuStripMenu";
+            this.menuStripMenu.Size = new System.Drawing.Size(1176, 28);
+            this.menuStripMenu.TabIndex = 11;
+            this.menuStripMenu.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // openFileDialogFileInput
+            // 
+            this.openFileDialogFileInput.FileName = "openFileDialog1";
+            this.openFileDialogFileInput.Filter = "MuseScore file|*.mscx";
+            // 
+            // richTextBoxLoop
+            // 
+            this.richTextBoxLoop.Location = new System.Drawing.Point(282, 31);
+            this.richTextBoxLoop.Name = "richTextBoxLoop";
+            this.richTextBoxLoop.Size = new System.Drawing.Size(394, 435);
+            this.richTextBoxLoop.TabIndex = 12;
+            this.richTextBoxLoop.Text = "";
+            // 
+            // buttonPlayStopLoop
+            // 
+            this.buttonPlayStopLoop.Enabled = false;
+            this.buttonPlayStopLoop.Location = new System.Drawing.Point(682, 31);
+            this.buttonPlayStopLoop.Name = "buttonPlayStopLoop";
+            this.buttonPlayStopLoop.Size = new System.Drawing.Size(264, 78);
+            this.buttonPlayStopLoop.TabIndex = 13;
+            this.buttonPlayStopLoop.Text = "Play Loop";
+            this.buttonPlayStopLoop.UseVisualStyleBackColor = true;
+            this.buttonPlayStopLoop.Click += new System.EventHandler(this.buttonPlayStopLoop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 839);
+            this.Controls.Add(this.buttonPlayStopLoop);
+            this.Controls.Add(this.richTextBoxLoop);
             this.Controls.Add(this.buttonChangeChordShape);
             this.Controls.Add(this.buttonPlayDisplayedChord);
             this.Controls.Add(this.comboBoxChordType);
@@ -190,6 +249,8 @@
             this.Controls.Add(this.pictureBoxH);
             this.Controls.Add(this.pictureBoxHE);
             this.Controls.Add(this.pictureBoxFretboard);
+            this.Controls.Add(this.menuStripMenu);
+            this.MainMenuStrip = this.menuStripMenu;
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -200,7 +261,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLE)).EndInit();
+            this.menuStripMenu.ResumeLayout(false);
+            this.menuStripMenu.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -217,5 +281,11 @@
         private ComboBox comboBoxChordType;
         private Button buttonPlayDisplayedChord;
         private Button buttonChangeChordShape;
+        private MenuStrip menuStripMenu;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private OpenFileDialog openFileDialogFileInput;
+        private RichTextBox richTextBoxLoop;
+        private Button buttonPlayStopLoop;
     }
 }
