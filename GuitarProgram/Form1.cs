@@ -50,6 +50,10 @@ namespace GuitarProgram
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if(playerThread.IsAlive)
+            {
+                playerThread.Join();
+            }
             guitar.Close();
         }
 
@@ -170,6 +174,7 @@ namespace GuitarProgram
                 // Clearing GUI:
                 richTextBoxLoop.Text = "";
                 buttonPlayStopLoop.Enabled = true;
+                buttonResetLoop.Enabled = true;
 
                 // Printing loaded loop:
                 foreach (Chord ch in loop)
@@ -186,6 +191,9 @@ namespace GuitarProgram
         /// </summary>
         private void playLoop()
         {
+            // Changing mode of guitar to loop mode:
+            guitar.ChangeMode();
+
             while (shouldPlay)
             {
                 // Getting next chord in the loop:
@@ -194,6 +202,9 @@ namespace GuitarProgram
                 // Play the chord: 
                 guitar.PlayChord(currentChord.duration, currentChord.RootNote, currentChord.Type);
             }
+
+            // Changing guitar back to normal mode:
+            guitar.ChangeMode();
         }
 
         /// <summary>
@@ -225,6 +236,7 @@ namespace GuitarProgram
                 // Changing the GUI: 
                 buttonPlayStopLoop.Text = "Play Loop";
                 chordSelectorEnableControls(true);
+                guitar.Reset();
             }
         }
 
@@ -238,6 +250,7 @@ namespace GuitarProgram
             {
                 // Changing the GUI:
                 buttonPlayStopLoop.Enabled = false;
+                buttonResetLoop.Enabled = false;
                 buttonValidateLoop.Enabled = true;
             }
             printing = false;
@@ -248,6 +261,9 @@ namespace GuitarProgram
         /// </summary>
         private void buttonValidateLoop_Click(object sender, EventArgs e)
         {
+            // Reseting pointer:
+            player.Reset();
+
             // Spliting text by lines
             string[] inputLoop = richTextBoxLoop.Text.Split('\n');
 
@@ -274,12 +290,13 @@ namespace GuitarProgram
 
                 // Changing GUI controls:
                 buttonPlayStopLoop.Enabled = true;
+                buttonResetLoop.Enabled = true;
                 buttonValidateLoop.Enabled = false;
             }
             // If not valid:
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show("Nn valid loop...\n Try again");
+                MessageBox.Show("Non valid loop...\n Try again");
             }
         }
 
