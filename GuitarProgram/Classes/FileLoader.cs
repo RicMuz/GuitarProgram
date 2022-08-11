@@ -76,7 +76,14 @@ namespace GuitarProgram
                 else if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Rest")
                 {
                     // Adding found chord:
-                    chordList.Add(new Chord(RootNote, chordType, duration));
+                    if(RootNote != Tones.None)
+                    { 
+                        chordList.Add(new Chord(RootNote, chordType, duration));
+                    }
+                    else
+                    {
+                        chordList.Add(new Chord(RootNote, ChordTypes.None, duration));
+                    }
 
                     // Reseting values for next chord:
                     chordType = ChordTypes.dur;

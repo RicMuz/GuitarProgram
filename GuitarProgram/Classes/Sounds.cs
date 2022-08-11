@@ -72,14 +72,17 @@ namespace GuitarProgram
 
         public void PlayChord(int[] ChordShape, Duration duration)
         {
-            // Starts playing given chord
-            this.startChord(ChordShape);
+            if(duration != Duration.None)
+            { 
+                // Starts playing given chord
+                this.startChord(ChordShape);
 
-            // Waits
-            Thread.Sleep(howLongShouldWait(duration));
+                // Waits
+                Thread.Sleep(howLongShouldWait(duration));
 
-            // Ends the currently playing chord
-            this.stopChord();
+                // Ends the currently playing chord
+                this.stopChord();
+            }
         }
 
         #endregion

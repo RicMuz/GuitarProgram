@@ -21,8 +21,9 @@
         // Current state:
         private Tones currentRootNote = Tones.None;
         private ChordTypes currentChordType = ChordTypes.None;
-        private int[] currentChordShape = new int[6] { -1, -1, -1, -1, -1, -1 };
+        private int[] currentChordShape = new int[NumberOfStrings] { -1, -1, -1, -1, -1, -1 };
         private int shapeNumber = 0;
+        private bool loopMode = false;
 
         // List of chords:
         private Dictionary<ChordTypes, Shape[]> chordShapes = new Dictionary<ChordTypes, Shape[]>();
@@ -123,14 +124,23 @@
 
         public void PlayChord(Duration duration, Tones RootNote = Tones.None, ChordTypes ChordType = ChordTypes.None)
         {
+            if(loopMode)
+            {
+                this.partialReset();
+            }
+
             // Changing chord if needed
             if(RootNote != Tones.None && ChordType != ChordTypes.None)
             {
                 this.GetChordShape(RootNote, ChordType);
             }
-            else if(RootNote != Tones.None && ChordType == ChordTypes.None) // TODO: Ignores pomlky
+            else if(RootNote != Tones.None && ChordType == ChordTypes.None)
             {
-                throw new Exception("Neither or both"); // TODO: This line
+                throw new Exception("Can't create neither play chord from just root note");
+            }
+            else if(RootNote == Tones.None && ChordType != ChordTypes.None)
+            {
+                throw new Exception("Can't create neither play chord from just chord type");
             }
 
             // Playing the souds of the chord
@@ -141,15 +151,40 @@
         {
             // Resets all variables:
             shapeNumber = 0;
-            currentChordShape = openStrings;
+            openStrings.CopyTo(currentChordShape,0);
             currentChordType = ChordTypes.None;
             currentRootNote = Tones.None;
 
             // Reset visual modul:
             visualGuitar.Reset();
 
-            // Reset original bpm:
+            // Reset pace:
             sounds.Pace = 60;
+        }
+
+        public void ChangeMode()
+        {
+            loopMode = !loopMode;
+        }
+
+        #endregion
+
+        //============================================================================================================
+        // PRIVATE METHODS - PRIVATE METHODS - PRIVATE METHODS - PRIVATE METHODS - PRIVATE METHODS - PRIVATE METHODS -
+        //============================================================================================================
+
+        #region Private Methods
+
+        /// <summary>
+        /// Resets all variables
+        /// </summary>
+        private void partialReset()
+        {
+            // Resets all variables:
+            shapeNumber = 0;
+            openStrings.CopyTo(currentChordShape, 0);
+            currentChordType = ChordTypes.None;
+            currentRootNote = Tones.None;
         }
 
         #endregion
