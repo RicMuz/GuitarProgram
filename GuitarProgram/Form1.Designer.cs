@@ -47,6 +47,7 @@
             this.buttonPlayStopLoop = new System.Windows.Forms.Button();
             this.labelLayout = new System.Windows.Forms.Label();
             this.buttonValidateLoop = new System.Windows.Forms.Button();
+            this.buttonResetLoop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFretboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxH)).BeginInit();
@@ -254,11 +255,23 @@
             this.buttonValidateLoop.UseVisualStyleBackColor = true;
             this.buttonValidateLoop.Click += new System.EventHandler(this.buttonValidateLoop_Click);
             // 
+            // buttonResetLoop
+            // 
+            this.buttonResetLoop.Enabled = false;
+            this.buttonResetLoop.Location = new System.Drawing.Point(682, 233);
+            this.buttonResetLoop.Name = "buttonResetLoop";
+            this.buttonResetLoop.Size = new System.Drawing.Size(264, 78);
+            this.buttonResetLoop.TabIndex = 16;
+            this.buttonResetLoop.Text = "Validate Loop";
+            this.buttonResetLoop.UseVisualStyleBackColor = true;
+            this.buttonResetLoop.Click += new System.EventHandler(this.buttonResetLoop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 839);
+            this.Controls.Add(this.buttonResetLoop);
             this.Controls.Add(this.buttonValidateLoop);
             this.Controls.Add(this.labelLayout);
             this.Controls.Add(this.buttonPlayStopLoop);
@@ -314,5 +327,6 @@
         private Button buttonPlayStopLoop;
         private Label labelLayout;
         private Button buttonValidateLoop;
+        private Button buttonResetLoop;
     }
 }
