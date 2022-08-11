@@ -9,9 +9,9 @@ namespace GuitarProgram
     internal interface ILoopPlayer
     {
         /// <summary>
-        /// Sets given loop to current loop
+        /// Sets/returns given loop to current loop
         /// </summary>
-        public List<Chord> Loop { set; }
+        public List<Chord> Loop { set; get; }
 
         /// <summary>
         /// Converts given text to loop

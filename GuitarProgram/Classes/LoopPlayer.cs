@@ -31,7 +31,7 @@ namespace GuitarProgram
 
         }
 
-        public List<Chord> Loop { set { currentLoop = value; numberOfChords = currentLoop.Count; } }
+        public List<Chord> Loop { set { currentLoop = value; numberOfChords = currentLoop.Count; } get { return currentLoop; } }
 
         public void LoadLoop(string[] input)
         {
@@ -45,6 +45,9 @@ namespace GuitarProgram
                 string[] parts = Line.Split(";");
                 newLoop.Add(new Chord(getRootNote(parts[0].Trim()), getChordType(parts[1].Trim()), getDuration(parts[2].Trim())));
             }
+
+            // Saves the new loop
+            this.Loop = newLoop;
         }
 
         public Chord NextChord()
