@@ -128,7 +128,7 @@
             {
                 this.GetChordShape(RootNote, ChordType);
             }
-            else if((RootNote != Tones.None && ChordType == ChordTypes.None) || (RootNote == Tones.None && ChordType != ChordTypes.None))
+            else if(RootNote != Tones.None && ChordType == ChordTypes.None) // TODO: Ignores pomlky
             {
                 throw new Exception("Neither or both"); // TODO: This line
             }
