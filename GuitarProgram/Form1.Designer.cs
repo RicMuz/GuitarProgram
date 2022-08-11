@@ -45,6 +45,8 @@
             this.openFileDialogFileInput = new System.Windows.Forms.OpenFileDialog();
             this.richTextBoxLoop = new System.Windows.Forms.RichTextBox();
             this.buttonPlayStopLoop = new System.Windows.Forms.Button();
+            this.labelLayout = new System.Windows.Forms.Label();
+            this.buttonValidateLoop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFretboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxH)).BeginInit();
@@ -214,16 +216,17 @@
             // 
             // richTextBoxLoop
             // 
-            this.richTextBoxLoop.Location = new System.Drawing.Point(282, 31);
+            this.richTextBoxLoop.Location = new System.Drawing.Point(282, 65);
             this.richTextBoxLoop.Name = "richTextBoxLoop";
-            this.richTextBoxLoop.Size = new System.Drawing.Size(394, 435);
+            this.richTextBoxLoop.Size = new System.Drawing.Size(394, 401);
             this.richTextBoxLoop.TabIndex = 12;
             this.richTextBoxLoop.Text = "";
+            this.richTextBoxLoop.TextChanged += new System.EventHandler(this.richTextBoxLoop_TextChanged);
             // 
             // buttonPlayStopLoop
             // 
             this.buttonPlayStopLoop.Enabled = false;
-            this.buttonPlayStopLoop.Location = new System.Drawing.Point(682, 31);
+            this.buttonPlayStopLoop.Location = new System.Drawing.Point(682, 65);
             this.buttonPlayStopLoop.Name = "buttonPlayStopLoop";
             this.buttonPlayStopLoop.Size = new System.Drawing.Size(264, 78);
             this.buttonPlayStopLoop.TabIndex = 13;
@@ -231,11 +234,33 @@
             this.buttonPlayStopLoop.UseVisualStyleBackColor = true;
             this.buttonPlayStopLoop.Click += new System.EventHandler(this.buttonPlayStopLoop_Click);
             // 
+            // labelLayout
+            // 
+            this.labelLayout.AutoSize = true;
+            this.labelLayout.Location = new System.Drawing.Point(282, 34);
+            this.labelLayout.Name = "labelLayout";
+            this.labelLayout.Size = new System.Drawing.Size(190, 20);
+            this.labelLayout.TabIndex = 14;
+            this.labelLayout.Text = "Tones; ChordType; Duration";
+            // 
+            // buttonValidateLoop
+            // 
+            this.buttonValidateLoop.Enabled = false;
+            this.buttonValidateLoop.Location = new System.Drawing.Point(682, 149);
+            this.buttonValidateLoop.Name = "buttonValidateLoop";
+            this.buttonValidateLoop.Size = new System.Drawing.Size(264, 78);
+            this.buttonValidateLoop.TabIndex = 15;
+            this.buttonValidateLoop.Text = "Validate Loop";
+            this.buttonValidateLoop.UseVisualStyleBackColor = true;
+            this.buttonValidateLoop.Click += new System.EventHandler(this.buttonValidateLoop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 839);
+            this.Controls.Add(this.buttonValidateLoop);
+            this.Controls.Add(this.labelLayout);
             this.Controls.Add(this.buttonPlayStopLoop);
             this.Controls.Add(this.richTextBoxLoop);
             this.Controls.Add(this.buttonChangeChordShape);
@@ -287,5 +312,7 @@
         private OpenFileDialog openFileDialogFileInput;
         private RichTextBox richTextBoxLoop;
         private Button buttonPlayStopLoop;
+        private Label labelLayout;
+        private Button buttonValidateLoop;
     }
 }

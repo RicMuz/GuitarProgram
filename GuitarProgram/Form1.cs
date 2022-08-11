@@ -24,6 +24,7 @@ namespace GuitarProgram
         Tones selectedRootNote = Tones.None;
         ChordTypes selectedChordType = ChordTypes.None;
         bool shouldPlay = false;
+        bool printing = false;
 
         #endregion
 
@@ -129,6 +130,7 @@ namespace GuitarProgram
 
                 foreach(Chord ch in loop)
                 {
+                    printing = true;
                     richTextBoxLoop.Text += $"{ch.RootNote}; {ch.Type}; {ch.duration}\n";
                 }
             }
@@ -159,6 +161,44 @@ namespace GuitarProgram
                 shouldPlay = false;
                 buttonPlayStopLoop.Text = "Play Loop";
                 chordSelectorEnableControls(true);
+            }
+        }
+
+        private void richTextBoxLoop_TextChanged(object sender, EventArgs e)
+        {
+            if (!printing)
+            {
+                buttonPlayStopLoop.Enabled = false;
+                buttonValidateLoop.Enabled = true;
+            }
+            printing = false;
+        }
+
+        private void buttonValidateLoop_Click(object sender, EventArgs e)
+        {
+            string[] inputLoop = richTextBoxLoop.Text.Split('\n');
+            if (inputLoop[inputLoop.Length - 1] == "")
+            {
+                inputLoop = inputLoop.SkipLast(1).ToArray();
+            }
+
+            try
+            {
+                player.LoadLoop(inputLoop);
+                richTextBoxLoop.Text = "";
+
+                foreach(Chord ch in  player.Loop)
+                {
+                    printing = true;
+                    richTextBoxLoop.Text += $"{ch.RootNote}; {ch.Type}; {ch.duration}\n";
+                }
+
+                buttonPlayStopLoop.Enabled = true;
+                buttonValidateLoop.Enabled = false;
+            }
+            catch(IndexOutOfRangeException)
+            {
+                MessageBox.Show("Nn valid loop...\n Try again");
             }
         }
     }
