@@ -30,6 +30,7 @@ If the input is given via large textbox, the user must follow the given format:
     - Duration where possibilities are:
         - Whole
         - Half, HalfD (Half with a dot)
+        - Quarter, QuarterD (Quarter with a dot)
         - Eighth, EighthD (Eight with a dot)
         - Sixteenth, SixteenthD (Sixteenth with a dot)
 - If the user wants to insert a dash, then the root note and chord type must be "none"
