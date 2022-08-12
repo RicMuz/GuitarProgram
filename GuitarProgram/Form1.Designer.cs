@@ -133,16 +133,16 @@
             this.comboBoxRootNote.FormattingEnabled = true;
             this.comboBoxRootNote.Items.AddRange(new object[] {
             "C",
-            "C#",
+            "Cis",
             "D",
-            "D#",
+            "Dis",
             "E",
             "F",
-            "F#",
+            "Fis",
             "G",
-            "G#",
+            "Gis",
             "A",
-            "A#",
+            "Ais",
             "H"});
             this.comboBoxRootNote.Location = new System.Drawing.Point(12, 31);
             this.comboBoxRootNote.Name = "comboBoxRootNote";
@@ -290,7 +290,7 @@
             this.Controls.Add(this.menuStripMenu);
             this.MainMenuStrip = this.menuStripMenu;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Guitar program";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFretboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHE)).EndInit();
