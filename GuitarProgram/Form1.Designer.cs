@@ -262,7 +262,7 @@
             this.buttonResetLoop.Name = "buttonResetLoop";
             this.buttonResetLoop.Size = new System.Drawing.Size(264, 78);
             this.buttonResetLoop.TabIndex = 16;
-            this.buttonResetLoop.Text = "Validate Loop";
+            this.buttonResetLoop.Text = "Reset loop";
             this.buttonResetLoop.UseVisualStyleBackColor = true;
             this.buttonResetLoop.Click += new System.EventHandler(this.buttonResetLoop_Click);
             // 
