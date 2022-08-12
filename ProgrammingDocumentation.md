@@ -29,3 +29,12 @@ Because there is a lot of waiting, it was necessary to use threading (for not lo
 ### Program
 
 See map
+
+### Adding chord shape
+
+List where changes must be done:
+
+1. MusicStructures.cs => ChordTypes => add enum
+2. Guitar.cs => constructor => add shape
+3. FileLoader.cs => according to file formatting (may change more things) => getChordType function
+4. LoopPlayer.cs => getChordType function
