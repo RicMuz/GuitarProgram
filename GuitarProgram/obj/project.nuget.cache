@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bWb08jCHAdpTrGSh3JDgxQRKPEp8lErUZk0fsQwXS4ORt0+2Ssf7JZyXYnpD7/FKoT6tCT+QPvaORt0D8/z0Tg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\risa\\GitRepositories\\student-muzikr\\GuitarProgram\\GuitarProgram.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\risa\\.nuget\\packages\\naudio.core\\2.1.0\\naudio.core.2.1.0.nupkg.sha512",
+    "C:\\Users\\risa\\.nuget\\packages\\naudio.midi\\2.1.0\\naudio.midi.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
