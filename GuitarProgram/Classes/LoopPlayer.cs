@@ -33,6 +33,8 @@ namespace GuitarProgram
 
         public List<Chord> Loop { set { currentLoop = value; numberOfChords = currentLoop.Count; } get { return currentLoop; } }
 
+        public int NumberOfChords { get { return numberOfChords; } }
+
         public void LoadLoop(string[] input)
         {
             // Creating new list:

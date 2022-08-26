@@ -170,6 +170,45 @@ namespace GuitarProgram
             richTextBoxLoop.Text += $"{chord.RootNote}; {chord.Type}; {chord.duration}\n";
         }
 
+        /// <summary>
+        /// Automatically enters double clicked chord into comboboxes
+        /// </summary>
+        private void richTextBoxLoop_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // If the loop isn't validated:
+            if (buttonValidateLoop.Enabled)
+            {
+                MessageBox.Show("Firstly you must validate the loop");
+            }
+            else
+            {
+                // Get line number where was double clicked:
+                int firstCharIndex = richTextBoxLoop.GetFirstCharIndexOfCurrentLine();
+                int currentLine = richTextBoxLoop.GetLineFromCharIndex(firstCharIndex);
+
+                // If the loop is empty or double clicked on the last line:
+                if (currentLine >= player.NumberOfChords)
+                {
+                    MessageBox.Show("You selected empty line.");
+                }
+                // Correct input:
+                else
+                {
+                    // Chosing chord from loop:
+                    List<Chord> loop = player.Loop;
+                    Chord chord = loop[currentLine];
+
+                    // Entering the data:
+                    comboBoxChordType.SelectedIndex = (int)chord.Type;
+                    comboBoxRootNote.SelectedIndex = (int)chord.RootNote;
+                    comboBoxDuration.SelectedIndex = (int)chord.duration;
+
+                    // Refreshing for text show:
+                    Refresh();
+                }
+            }
+        }
+
         #endregion
 
         //============================================================================================================
@@ -336,5 +375,6 @@ namespace GuitarProgram
 
         #endregion
 
+        
     }
 }

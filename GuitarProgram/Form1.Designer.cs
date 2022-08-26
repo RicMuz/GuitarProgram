@@ -225,6 +225,7 @@
             this.richTextBoxLoop.TabIndex = 12;
             this.richTextBoxLoop.Text = "";
             this.richTextBoxLoop.TextChanged += new System.EventHandler(this.richTextBoxLoop_TextChanged);
+            this.richTextBoxLoop.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.richTextBoxLoop_MouseDoubleClick);
             // 
             // buttonPlayStopLoop
             // 

@@ -14,6 +14,11 @@ namespace GuitarProgram
         public List<Chord> Loop { set; get; }
 
         /// <summary>
+        /// Returns number of chords in current loop
+        /// </summary>
+        public int NumberOfChords { get; }
+
+        /// <summary>
         /// Converts given text to loop
         /// </summary>
         /// <param name="input">Input text in defined format</param>
