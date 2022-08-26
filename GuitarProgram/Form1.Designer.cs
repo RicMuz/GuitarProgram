@@ -49,6 +49,7 @@
             this.buttonValidateLoop = new System.Windows.Forms.Button();
             this.buttonResetLoop = new System.Windows.Forms.Button();
             this.comboBoxDuration = new System.Windows.Forms.ComboBox();
+            this.buttonAddToLoop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFretboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxH)).BeginInit();
@@ -285,11 +286,23 @@
             this.comboBoxDuration.Size = new System.Drawing.Size(129, 28);
             this.comboBoxDuration.TabIndex = 17;
             // 
+            // buttonAddToLoop
+            // 
+            this.buttonAddToLoop.Enabled = false;
+            this.buttonAddToLoop.Location = new System.Drawing.Point(12, 267);
+            this.buttonAddToLoop.Name = "buttonAddToLoop";
+            this.buttonAddToLoop.Size = new System.Drawing.Size(264, 78);
+            this.buttonAddToLoop.TabIndex = 18;
+            this.buttonAddToLoop.Text = "Adds selected chord to the end of current loop";
+            this.buttonAddToLoop.UseVisualStyleBackColor = true;
+            this.buttonAddToLoop.Click += new System.EventHandler(this.buttonAddToLoop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 839);
+            this.Controls.Add(this.buttonAddToLoop);
             this.Controls.Add(this.comboBoxDuration);
             this.Controls.Add(this.buttonResetLoop);
             this.Controls.Add(this.buttonValidateLoop);
@@ -349,5 +362,6 @@
         private Button buttonValidateLoop;
         private Button buttonResetLoop;
         private ComboBox comboBoxDuration;
+        private Button buttonAddToLoop;
     }
 }

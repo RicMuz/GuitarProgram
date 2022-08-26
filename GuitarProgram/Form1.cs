@@ -89,6 +89,7 @@ namespace GuitarProgram
             buttonChangeChordShape.Enabled = b;
             buttonPlayDisplayedChord.Enabled = b;
             comboBoxDuration.Enabled = b;
+            buttonAddToLoop.Enabled = b;
         }
 
         /// <summary>
@@ -105,6 +106,7 @@ namespace GuitarProgram
                 guitar.GetChordShape(selectedRootNote, selectedChordType);
                 buttonPlayDisplayedChord.Enabled = true;
                 buttonChangeChordShape.Enabled = true;
+                buttonAddToLoop.Enabled = true;
             }
         }
 
@@ -122,6 +124,7 @@ namespace GuitarProgram
                 guitar.GetChordShape(selectedRootNote, selectedChordType);
                 buttonPlayDisplayedChord.Enabled = true;
                 buttonChangeChordShape.Enabled = true;
+                buttonAddToLoop.Enabled = true;
             }
         }
 
@@ -145,6 +148,26 @@ namespace GuitarProgram
             {
                 guitar.ChangeShape();
             }
+        }
+
+        /// <summary>
+        /// Adds chord from comboboxes to current loop
+        /// </summary>
+        private void buttonAddToLoop_Click(object sender, EventArgs e)
+        {
+            // Creating a new chord and adding it to the end of the loop:
+            Chord chord = new Chord(selectedRootNote, selectedChordType, (Duration)comboBoxDuration.SelectedIndex);
+            List<Chord> loop = player.Loop;
+            loop.Add(chord);
+            player.Loop = loop;
+
+            // If this was first chord, then enable controls of loop:
+            buttonPlayStopLoop.Enabled = true;
+            buttonResetLoop.Enabled = true;
+
+            // Prints added chord:
+            printing = true;
+            richTextBoxLoop.Text += $"{chord.RootNote}; {chord.Type}; {chord.duration}\n";
         }
 
         #endregion
@@ -312,5 +335,6 @@ namespace GuitarProgram
         }
 
         #endregion
+
     }
 }
