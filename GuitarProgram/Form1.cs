@@ -289,6 +289,8 @@ namespace GuitarProgram
                 buttonPlayStopLoop.Text = "Stop Loop";
                 resetChordSelector();
                 chordSelectorEnableControls(false);
+                buttonResetLoop.Enabled = false;
+                richTextBoxLoop.Enabled = false;
 
                 // Starting the playing thread:
                 playerThread.Start();
@@ -302,6 +304,8 @@ namespace GuitarProgram
                 buttonPlayStopLoop.Text = "Play Loop";
                 chordSelectorEnableControls(true);
                 guitar.Reset();
+                buttonResetLoop.Enabled = true;
+                richTextBoxLoop.Enabled = true;
             }
         }
 
