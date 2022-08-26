@@ -48,6 +48,7 @@
             this.labelLayout = new System.Windows.Forms.Label();
             this.buttonValidateLoop = new System.Windows.Forms.Button();
             this.buttonResetLoop = new System.Windows.Forms.Button();
+            this.comboBoxDuration = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFretboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxH)).BeginInit();
@@ -165,7 +166,7 @@
             // buttonPlayDisplayedChord
             // 
             this.buttonPlayDisplayedChord.Enabled = false;
-            this.buttonPlayDisplayedChord.Location = new System.Drawing.Point(12, 65);
+            this.buttonPlayDisplayedChord.Location = new System.Drawing.Point(12, 99);
             this.buttonPlayDisplayedChord.Name = "buttonPlayDisplayedChord";
             this.buttonPlayDisplayedChord.Size = new System.Drawing.Size(264, 78);
             this.buttonPlayDisplayedChord.TabIndex = 9;
@@ -176,7 +177,7 @@
             // buttonChangeChordShape
             // 
             this.buttonChangeChordShape.Enabled = false;
-            this.buttonChangeChordShape.Location = new System.Drawing.Point(12, 149);
+            this.buttonChangeChordShape.Location = new System.Drawing.Point(12, 183);
             this.buttonChangeChordShape.Name = "buttonChangeChordShape";
             this.buttonChangeChordShape.Size = new System.Drawing.Size(264, 78);
             this.buttonChangeChordShape.TabIndex = 10;
@@ -266,11 +267,30 @@
             this.buttonResetLoop.UseVisualStyleBackColor = true;
             this.buttonResetLoop.Click += new System.EventHandler(this.buttonResetLoop_Click);
             // 
+            // comboBoxDuration
+            // 
+            this.comboBoxDuration.FormattingEnabled = true;
+            this.comboBoxDuration.Items.AddRange(new object[] {
+            "Whole",
+            "HalfD",
+            "Half",
+            "Quarter",
+            "QuarterD",
+            "EightD",
+            "Eight",
+            "Sixteenth",
+            "SixteenthD"});
+            this.comboBoxDuration.Location = new System.Drawing.Point(81, 65);
+            this.comboBoxDuration.Name = "comboBoxDuration";
+            this.comboBoxDuration.Size = new System.Drawing.Size(129, 28);
+            this.comboBoxDuration.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 839);
+            this.Controls.Add(this.comboBoxDuration);
             this.Controls.Add(this.buttonResetLoop);
             this.Controls.Add(this.buttonValidateLoop);
             this.Controls.Add(this.labelLayout);
@@ -328,5 +348,6 @@
         private Label labelLayout;
         private Button buttonValidateLoop;
         private Button buttonResetLoop;
+        private ComboBox comboBoxDuration;
     }
 }

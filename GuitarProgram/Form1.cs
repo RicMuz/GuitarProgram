@@ -19,8 +19,6 @@ namespace GuitarProgram
         Thread playerThread;
 
         // Variables:
-        // TODO: This should be also reset, when changing modes
-        // TODO: When no chord is selected buttons shouldn't be enabled
         Tones selectedRootNote = Tones.None;
         ChordTypes selectedChordType = ChordTypes.None;
         bool shouldPlay = false;
@@ -46,6 +44,9 @@ namespace GuitarProgram
             fileLoader = new FileLoader();
             player = new LoopPlayer();
             playerThread = new Thread(playLoop);
+
+            // Set default duration for comboboxes:
+            comboBoxDuration.SelectedIndex = 0;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -74,6 +75,7 @@ namespace GuitarProgram
             selectedRootNote = Tones.None;
             comboBoxChordType.Text = "";
             comboBoxRootNote.Text = "";
+            comboBoxDuration.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -86,6 +88,7 @@ namespace GuitarProgram
             comboBoxChordType.Enabled = b;
             buttonChangeChordShape.Enabled = b;
             buttonPlayDisplayedChord.Enabled = b;
+            comboBoxDuration.Enabled = b;
         }
 
         /// <summary>
@@ -129,7 +132,7 @@ namespace GuitarProgram
         {
             if (selectedChordType != ChordTypes.None && selectedRootNote != Tones.None)
             {
-                guitar.PlayChord(Duration.Whole);
+                guitar.PlayChord((Duration)comboBoxDuration.SelectedIndex);
             }
         }
 
