@@ -145,7 +145,8 @@
             "Gis",
             "A",
             "Ais",
-            "H"});
+            "H",
+            "None"});
             this.comboBoxRootNote.Location = new System.Drawing.Point(12, 31);
             this.comboBoxRootNote.Name = "comboBoxRootNote";
             this.comboBoxRootNote.Size = new System.Drawing.Size(129, 28);
@@ -157,7 +158,8 @@
             this.comboBoxChordType.FormattingEnabled = true;
             this.comboBoxChordType.Items.AddRange(new object[] {
             "dur",
-            "moll"});
+            "moll",
+            "None"});
             this.comboBoxChordType.Location = new System.Drawing.Point(147, 31);
             this.comboBoxChordType.Name = "comboBoxChordType";
             this.comboBoxChordType.Size = new System.Drawing.Size(129, 28);
@@ -281,7 +283,8 @@
             "EightD",
             "Eight",
             "Sixteenth",
-            "SixteenthD"});
+            "SixteenthD",
+            "None"});
             this.comboBoxDuration.Location = new System.Drawing.Point(81, 65);
             this.comboBoxDuration.Name = "comboBoxDuration";
             this.comboBoxDuration.Size = new System.Drawing.Size(129, 28);

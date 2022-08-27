@@ -51,7 +51,7 @@ namespace GuitarProgram
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(playerThread.IsAlive)
+            if (playerThread.IsAlive)
             {
                 playerThread.Join();
             }
@@ -100,13 +100,33 @@ namespace GuitarProgram
             // Select root note and save:
             selectedRootNote = (Tones)comboBoxRootNote.SelectedIndex;
 
+            // If None was selected:
+            if (selectedRootNote == Tones.None)
+            {
+                guitar.Reset();
+                buttonChangeChordShape.Enabled = false;
+                buttonPlayDisplayedChord.Enabled = false;
+                if (selectedChordType != ChordTypes.None)
+                {
+                    buttonAddToLoop.Enabled = false;
+                }
+                else
+                {
+                    buttonAddToLoop.Enabled = true;
+                }
+            }
             // If both necessary information are completed, show the chord:
-            if (selectedChordType != ChordTypes.None)
+            else if (selectedChordType != ChordTypes.None)
             {
                 guitar.GetChordShape(selectedRootNote, selectedChordType);
                 buttonPlayDisplayedChord.Enabled = true;
                 buttonChangeChordShape.Enabled = true;
                 buttonAddToLoop.Enabled = true;
+            }
+            // Root note is selected, but chord type isn't:
+            else
+            {
+                buttonAddToLoop.Enabled=false;
             }
         }
 
@@ -118,13 +138,33 @@ namespace GuitarProgram
             // Select type of chord and save:
             selectedChordType = (ChordTypes)comboBoxChordType.SelectedIndex;
 
+            // If None was selected:
+            if (selectedChordType == ChordTypes.None)
+            {
+                guitar.Reset();
+                buttonChangeChordShape.Enabled = false;
+                buttonPlayDisplayedChord.Enabled = false;
+                if(selectedRootNote != Tones.None)
+                {
+                    buttonAddToLoop.Enabled = false;
+                }
+                else
+                {
+                    buttonAddToLoop.Enabled = true;
+                }
+            }
             // If both necessary information are completed, show the chord:
-            if (selectedRootNote != Tones.None)
+            else if (selectedRootNote != Tones.None)
             {
                 guitar.GetChordShape(selectedRootNote, selectedChordType);
                 buttonPlayDisplayedChord.Enabled = true;
                 buttonChangeChordShape.Enabled = true;
                 buttonAddToLoop.Enabled = true;
+            }
+            // Chord type is selected, but root note isn't:
+            else
+            {
+                buttonAddToLoop.Enabled = false;
             }
         }
 
@@ -379,6 +419,6 @@ namespace GuitarProgram
 
         #endregion
 
-        
+
     }
 }
