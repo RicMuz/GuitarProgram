@@ -343,6 +343,9 @@ namespace GuitarProgram
                 // Changing the GUI: 
                 buttonPlayStopLoop.Text = "Play Loop";
                 chordSelectorEnableControls(true);
+                comboBoxChordType.SelectedIndex = 2;
+                comboBoxRootNote.SelectedIndex = 12;
+                comboBoxDuration.SelectedIndex = 0;
                 guitar.Reset();
                 buttonResetLoop.Enabled = true;
                 richTextBoxLoop.Enabled = true;
