@@ -84,12 +84,12 @@ namespace GuitarProgram
         /// <param name="b">True => enables, false => unenables</param>
         private void chordSelectorEnableControls(bool b)
         {
+            comboBoxChordType.SelectedIndex = 2;
+            comboBoxRootNote.SelectedIndex = 12;
+            comboBoxDuration.SelectedIndex = 0;
             comboBoxRootNote.Enabled = b;
             comboBoxChordType.Enabled = b;
-            buttonChangeChordShape.Enabled = b;
-            buttonPlayDisplayedChord.Enabled = b;
             comboBoxDuration.Enabled = b;
-            buttonAddToLoop.Enabled = b;
         }
 
         /// <summary>
@@ -343,9 +343,6 @@ namespace GuitarProgram
                 // Changing the GUI: 
                 buttonPlayStopLoop.Text = "Play Loop";
                 chordSelectorEnableControls(true);
-                comboBoxChordType.SelectedIndex = 2;
-                comboBoxRootNote.SelectedIndex = 12;
-                comboBoxDuration.SelectedIndex = 0;
                 guitar.Reset();
                 buttonResetLoop.Enabled = true;
                 richTextBoxLoop.Enabled = true;
