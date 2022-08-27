@@ -9,7 +9,7 @@ When the program launches the user will notice that most of the buttons are unav
 
 #### Chord selector mode
 
-Let's talk about the chord selector mode first. To operate this mode there are two combo boxes and two buttons: play chord and change shape. Until the root note and chord type are selected (via combo boxes) the other buttons will remain unavialable. After selecting the desired chord, the shape is created and graphically shown on the digital fretboard. Pressing the Play button will play the displayed chord. The Change shape button will cycle through all shapes for the given chord type.
+Let's talk about the chord selector mode first. To operate this mode there are three combo boxes and three buttons: play chord, change shape and add to loop. Until the root note and chord type are selected (via combo boxes) the other buttons will remain unavialable. After selecting the desired chord, the shape is created and graphically shown on the digital fretboard. Pressing the Play button will play the displayed chord for duration selected in the third combo box. The Change shape button will cycle through all shapes for the given chord type. Last button connects both modes and adds selected chord to the end of current loop.
 
 
 #### Playback (loop) mode
@@ -27,12 +27,7 @@ If the input is given via large textbox, the user must follow the given format:
 - A line consists of three bits of informations seperated by ;
     - Root note (see combo box)
     - Chord type (see combo box)
-    - Duration where possibilities are:
-        - Whole
-        - Half, HalfD (Half with a dot)
-        - Quarter, QuarterD (Quarter with a dot)
-        - Eighth, EighthD (Eight with a dot)
-        - Sixteenth, SixteenthD (Sixteenth with a dot)
+    - Duration (see combo box)
 - If the user wants to insert a dash, then the root note and chord type must be "none"
 - Input isn't case sensitive
 - Examples of correct input:
@@ -52,4 +47,4 @@ The program can process MuseScore files, but only the guitar ones. The file must
 
 ##### Playing the loaded loop
 
-After loading the loop the Play loop button and Reset loop button will be available. Play loop starts playing the loop. While playing, all other controls are diabled and the Play loop button will become the Stop loop button. After stopping it the user has two options. Continue (the Play loop button again) or resetting the loop to the beginning (the Reset loop button) and then play from the beginning (the Play button). 
+After loading the loop the Play loop button and Reset loop button will be available. Play loop starts playing the loop. While playing, all other controls are diabled and the Play loop button will become the Stop loop button. After stopping it the user has two options. Continue (the Play loop button again) or resetting the loop to the beginning (the Reset loop button) and then play from the beginning (the Play button). If user want to see specific chord from the loop, than double-click on desired line and program will autofill this line to the combo boxes from select mode of the program. This is enabled just when the loop is stopped. 
