@@ -393,10 +393,20 @@ namespace GuitarProgram
             //Validate:
             else
             {
+                List<int> possiblyWrongInputs = new List<int>();
+
                 // Printing the valid loop again (in a formated way):
                 richTextBoxLoop.Text = "";
-                foreach (Chord ch in player.Loop)
+                for(int i = 0; i < player.NumberOfChords; i++)
                 {
+                    Chord ch = player.Loop[i];
+
+                    // Suspicious inputs:
+                    if (ch.duration == Duration.None)
+                    {
+                        possiblyWrongInputs.Add(i);
+                    }
+
                     //The user won't have to validate again the loop (endless loop otherwise):
                     printing = true;
                     richTextBoxLoop.Text += $"{ch.RootNote}; {ch.Type}; {ch.duration}\n";
@@ -406,6 +416,20 @@ namespace GuitarProgram
                 buttonPlayStopLoop.Enabled = true;
                 buttonResetLoop.Enabled = true;
                 buttonValidateLoop.Enabled = false;
+
+                // Notify the user of rows that will do nothing (suspicious lines):
+                if (possiblyWrongInputs.Count > 0)
+                {
+                    string errorMessage = "These lines might be possibly wrong and will be ignored:\n";
+
+                    // Adding every suspicious line:
+                    foreach(int i in possiblyWrongInputs)
+                    {
+                        errorMessage += $"Line {i + 1}: {inputLoop[i]}\n";
+                    }
+
+                    MessageBox.Show(errorMessage);
+                }
             }
         }
 
