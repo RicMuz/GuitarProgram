@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GuitarProgram
+﻿namespace GuitarProgram
 {
     internal class LoopPlayer : ILoopPlayer
     {
@@ -35,16 +29,25 @@ namespace GuitarProgram
 
         public int NumberOfChords { get { return numberOfChords; } }
 
-        public void LoadLoop(string[] input)
+        public int LoadLoop(string[] input)
         {
+            // Getting lenght of the input: 
+            int lenghtOfInput = input.Length;
+
             // Creating new list:
             List<Chord> newLoop = new List<Chord>();
 
             // Processing of input parts
-            foreach (string line in input)
+            for (int i = 0; i < lenghtOfInput; i++)
             {
-                string Line = line.ToUpper();
+                string Line = input[i].ToUpper();
                 string[] parts = Line.Split(";");
+
+                // Not enough information:
+                if(parts.Length != 3)
+                {
+                    return i;
+                }
 
                 // Getting correct format:
                 Tones tone = getRootNote(parts[0].Trim());
@@ -52,7 +55,7 @@ namespace GuitarProgram
                 Duration duration = getDuration(parts[2].Trim());
 
                 // Dash:
-                if((tone == Tones.None || chordType == ChordTypes.None) && duration != Duration.None)
+                if ((tone == Tones.None || chordType == ChordTypes.None) && duration != Duration.None)
                 {
                     newLoop.Add(new Chord(Tones.None, ChordTypes.None, duration));
                 }
@@ -70,6 +73,9 @@ namespace GuitarProgram
 
             // Saves the new loop
             this.Loop = newLoop;
+
+            // Successful load:
+            return -1;
         }
 
         public Chord NextChord()
@@ -173,9 +179,9 @@ namespace GuitarProgram
                     return Duration.Quarter;
                 case "QUARTERD":
                     return Duration.QuarterD;
-                case "EIGHTH":
+                case "EIGHT":
                     return Duration.Eight;
-                case "EIGHTHD":
+                case "EIGHTD":
                     return Duration.EightD;
                 case "SIXTEENTH":
                     return Duration.Sixteenth;

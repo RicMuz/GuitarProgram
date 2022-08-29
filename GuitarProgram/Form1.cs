@@ -382,12 +382,17 @@ namespace GuitarProgram
                 inputLoop = inputLoop.SkipLast(1).ToArray();
             }
 
-            // Validation and loading:
-            try
-            {
-                // Loads the loop:
-                player.LoadLoop(inputLoop);
+            // Loading and validating new loop:
+            int exitCodeOfFunction = player.LoadLoop(inputLoop);
 
+            // Non valid:
+            if(exitCodeOfFunction>=0)
+            {
+                MessageBox.Show($"Non valid loop...\nError on line {exitCodeOfFunction + 1}:\n{inputLoop[exitCodeOfFunction]}");
+            }
+            //Validate:
+            else
+            {
                 // Printing the valid loop again (in a formated way):
                 richTextBoxLoop.Text = "";
                 foreach (Chord ch in player.Loop)
@@ -401,11 +406,6 @@ namespace GuitarProgram
                 buttonPlayStopLoop.Enabled = true;
                 buttonResetLoop.Enabled = true;
                 buttonValidateLoop.Enabled = false;
-            }
-            // If not valid:
-            catch (IndexOutOfRangeException)
-            {
-                MessageBox.Show("Non valid loop...\n Try again");
             }
         }
 

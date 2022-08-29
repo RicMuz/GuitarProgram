@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GuitarProgram
+﻿namespace GuitarProgram
 {
     internal interface ILoopPlayer
     {
@@ -22,7 +16,8 @@ namespace GuitarProgram
         /// Converts given text to loop
         /// </summary>
         /// <param name="input">Input text in defined format</param>
-        public void LoadLoop(string[] input);
+        /// <returns>Negative number if successful, otherwise line number where error is</returns>
+        public int LoadLoop(string[] input);
 
         /// <summary>
         /// Increases pointer and returns next chord
